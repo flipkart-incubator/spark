@@ -230,6 +230,16 @@
   </properties>
   <repositories>
     <repository>
+      <id>fk-art-snapshot</id>
+      <name>Flipkart-Artifactory</name>
+      <url>http://10.47.3.13/artifactory/v1.0/artifacts/libs-snapshots-local</url>
+    </repository>
+    <repository>
+      <id>fk-art-release</id>
+      <name>Flipkart-Artifactory</name>
+      <url>http://10.47.3.13/artifactory/v1.0/artifacts/libs-release-local</url>
+    </repository>
+    <repository>
       <id>central</id>
       <!-- This should be at top, it makes maven try the central repo first and then others and hence faster dep resolution -->
       <name>Maven Repository</name>
@@ -242,7 +252,27 @@
       </snapshots>
     </repository>
   </repositories>
+  <distributionManagement>
+    <snapshotRepository>
+      <id>fk-art-snapshot</id>
+      <name>libs-snapshot</name>
+      <url>http://10.47.3.13/artifactory/v1.0/artifacts/libs-snapshots-local</url>
+    </snapshotRepository>
+    <repository>
+      <id>fk-art-release</id>
+      <name>libs-rel</name>
+      <url>http://10.47.3.13/artifactory/v1.0/artifacts/libs-release-local</url>
+    </repository>
+  </distributionManagement>
   <pluginRepositories>
+    <pluginRepository>
+      <id>flipkart-libs-snapshots-local</id>
+      <url>http://10.47.3.13/artifactory/v1.0/artifacts/libs-snapshots-local</url>
+    </pluginRepository>
+    <pluginRepository>
+      <id>flipkart-libs-release-local</id>
+      <url>http://10.47.3.13/artifactory/v1.0/artifacts/libs-release-local</url>
+    </pluginRepository>
     <pluginRepository>
       <id>central</id>
       <url>https://repo.maven.apache.org/maven2</url>
