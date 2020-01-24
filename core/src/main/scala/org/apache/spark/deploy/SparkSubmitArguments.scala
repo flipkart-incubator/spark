@@ -80,6 +80,7 @@ private[deploy] class SparkSubmitArguments(args: Seq[String], env: Map[String, S
   // Standalone cluster mode only
   var supervise: Boolean = false
   var driverCores: String = null
+  var driverGPUs: String = null
   var submissionToKill: String = null
   var submissionToRequestStatusFor: String = null
   var useRest: Boolean = false // used internally
@@ -169,6 +170,9 @@ private[deploy] class SparkSubmitArguments(args: Seq[String], env: Map[String, S
       .orNull
     driverCores = Option(driverCores)
       .orElse(sparkProperties.get("spark.driver.cores"))
+      .orNull
+    driverGPUs = Option(driverGPUs)
+      .orElse(sparkProperties.get("spark.driver.gpus"))
       .orNull
     executorMemory = Option(executorMemory)
       .orElse(sparkProperties.get("spark.executor.memory"))
@@ -330,6 +334,7 @@ private[deploy] class SparkSubmitArguments(args: Seq[String], env: Map[String, S
     |  propertiesFile          $propertiesFile
     |  driverMemory            $driverMemory
     |  driverCores             $driverCores
+    |  driverGPUs              $driverGPUs
     |  driverExtraClassPath    $driverExtraClassPath
     |  driverExtraLibraryPath  $driverExtraLibraryPath
     |  driverExtraJavaOptions  $driverExtraJavaOptions
@@ -390,6 +395,9 @@ private[deploy] class SparkSubmitArguments(args: Seq[String], env: Map[String, S
 
       case DRIVER_CORES =>
         driverCores = value
+
+      case DRIVER_GPUS =>
+        driverGPUs = value
 
       case DRIVER_CLASS_PATH =>
         driverExtraClassPath = value
@@ -564,6 +572,9 @@ private[deploy] class SparkSubmitArguments(args: Seq[String], env: Map[String, S
         | Cluster deploy mode only:
         |  --driver-cores NUM          Number of cores used by the driver, only in cluster mode
         |                              (Default: 1).
+        |
+        |  --driver-gpus NUM          Number of GPUs used by the driver, only in cluster mode
+        |                              (Default: 0).
         |
         | Spark standalone or Mesos with cluster deploy mode only:
         |  --supervise                 If given, restarts the driver on failure.

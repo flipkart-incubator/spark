@@ -545,6 +545,8 @@ private[spark] class SparkSubmit extends Logging {
         confKey = "spark.driver.memory"),
       OptionAssigner(args.driverCores, STANDALONE | MESOS | YARN | KUBERNETES, CLUSTER,
         confKey = "spark.driver.cores"),
+      OptionAssigner(args.driverGPUs, YARN, CLUSTER,
+        confKey = "spark.driver.gpus"),
       OptionAssigner(args.supervise.toString, STANDALONE | MESOS, CLUSTER,
         confKey = "spark.driver.supervise"),
       OptionAssigner(args.ivyRepoPath, STANDALONE, CLUSTER, confKey = "spark.jars.ivy"),

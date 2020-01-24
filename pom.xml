@@ -239,18 +239,18 @@
       <name>Flipkart-Artifactory</name>
       <url>http://10.47.3.13/artifactory/v1.0/artifacts/libs-release-local</url>
     </repository>
-    <repository>
-      <id>central</id>
-      <!-- This should be at top, it makes maven try the central repo first and then others and hence faster dep resolution -->
-      <name>Maven Repository</name>
-      <url>https://repo.maven.apache.org/maven2</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
+<!--    <repository>-->
+<!--      <id>central</id>-->
+<!--      &lt;!&ndash; This should be at top, it makes maven try the central repo first and then others and hence faster dep resolution &ndash;&gt;-->
+<!--      <name>Maven Repository</name>-->
+<!--      <url>https://repo.maven.apache.org/maven2</url>-->
+<!--      <releases>-->
+<!--        <enabled>true</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>false</enabled>-->
+<!--      </snapshots>-->
+<!--    </repository>-->
   </repositories>
   <distributionManagement>
     <snapshotRepository>
@@ -273,16 +273,16 @@
       <id>flipkart-libs-release-local</id>
       <url>http://10.47.3.13/artifactory/v1.0/artifacts/libs-release-local</url>
     </pluginRepository>
-    <pluginRepository>
-      <id>central</id>
-      <url>https://repo.maven.apache.org/maven2</url>
-      <releases>
-        <enabled>true</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </pluginRepository>
+<!--    <pluginRepository>-->
+<!--      <id>central</id>-->
+<!--      <url>https://repo.maven.apache.org/maven2</url>-->
+<!--      <releases>-->
+<!--        <enabled>true</enabled>-->
+<!--      </releases>-->
+<!--      <snapshots>-->
+<!--        <enabled>false</enabled>-->
+<!--      </snapshots>-->
+<!--    </pluginRepository>-->
   </pluginRepositories>
   <dependencies>
     <!--

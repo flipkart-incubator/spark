@@ -87,6 +87,12 @@ private[spark] class Client(
     sparkConf.get(AM_CORES)
   }
 
+  private val amGPUs = if (isClusterMode) {
+    sparkConf.get(DRIVER_GPUS)
+  } else {
+    0
+  }
+
   // Executor related configurations
   private val executorMemory = sparkConf.get(EXECUTOR_MEMORY)
   private val executorMemoryOverhead = sparkConf.get(EXECUTOR_MEMORY_OVERHEAD).getOrElse(
@@ -257,6 +263,8 @@ private[spark] class Client(
     val capability = Records.newRecord(classOf[Resource])
     capability.setMemory(amMemory + amMemoryOverhead)
     capability.setVirtualCores(amCores)
+//    capability.setResourceValue("yarn.io/gpu", amGPUs)
+    // TODO Remove the hardcoded value. Used for testing
     capability.setResourceValue("yarn.io/gpu", 1)
 
     sparkConf.get(AM_NODE_LABEL_EXPRESSION) match {

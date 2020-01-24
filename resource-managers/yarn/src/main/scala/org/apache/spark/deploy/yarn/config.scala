@@ -228,6 +228,10 @@ package object config {
     .intConf
     .createWithDefault(1)
 
+  private[spark] val DRIVER_GPUS = ConfigBuilder("spark.driver.gpus")
+    .intConf
+    .createWithDefault(0)
+
   /* Executor configuration. */
 
   private[spark] val EXECUTOR_CORES = ConfigBuilder("spark.executor.cores")
