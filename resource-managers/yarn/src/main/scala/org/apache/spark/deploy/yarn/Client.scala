@@ -263,9 +263,9 @@ private[spark] class Client(
     val capability = Records.newRecord(classOf[Resource])
     capability.setMemory(amMemory + amMemoryOverhead)
     capability.setVirtualCores(amCores)
-//    capability.setResourceValue("yarn.io/gpu", amGPUs)
+    capability.setResourceValue("yarn.io/gpu", amGPUs)
     // TODO Remove the hardcoded value. Used for testing
-    capability.setResourceValue("yarn.io/gpu", 1)
+    // capability.setResourceValue("yarn.io/gpu", 1)
 
     sparkConf.get(AM_NODE_LABEL_EXPRESSION) match {
       case Some(expr) =>
